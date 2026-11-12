@@ -177,6 +177,7 @@
           <a class="upload-btn" id="uploadBtn" href="#" target="_blank" rel="noopener noreferrer">Upload your videos</a>
         </div>
         <p class="no-upload" id="noUpload" hidden>Your upload link will arrive by text.</p>
+        <p class="reassurance" id="driveHint" hidden>Opens Google Drive. If you're on your phone, upload from the Google Drive app.</p>
         <p class="reassurance" id="reassurance" hidden>We get notified the second it lands.</p>
       </main>
 
@@ -237,6 +238,7 @@
           var uploadBtn = document.getElementById("uploadBtn");
           uploadBtn.href = upload;
           document.getElementById("ctaWrap").hidden = false;
+          document.getElementById("driveHint").hidden = false;
           document.getElementById("reassurance").hidden = false;
         } else {
           document.getElementById("noUpload").hidden = false;
