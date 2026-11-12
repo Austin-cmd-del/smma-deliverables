@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light" />
+    <link rel="icon" href="data:," />
+    <title>SMMA Deliverables</title>
+    <style>
+      :root {
+        --black: #0a0a0a;
+        --ink: #111111;
+        --gray: #6b6b6b;
+        --gray-light: #9a9a9a;
+        --hairline: #e7e7e7;
+        --orange: #e85d04;
+        --bg: #ffffff;
+      }
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+      .page {
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 56px 28px 36px;
+      }
+      @media (min-width: 640px) {
+        .page { padding: 80px 40px 44px; }
+      }
+      main { flex: 1 0 auto; }
+
+      .eyebrow {
+        margin: 0 0 20px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--orange);
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(42px, 11vw, 56px);
+        line-height: 1.02;
+        font-weight: 800;
+        letter-spacing: -0.035em;
+        color: var(--black);
+        overflow-wrap: break-word;
+      }
+      .business {
+        margin: 14px 0 0;
+        font-size: 19px;
+        line-height: 1.35;
+        font-weight: 400;
+        color: var(--gray);
+        overflow-wrap: break-word;
+      }
+      .business[hidden] { display: none; }
+
+      .divider {
+        border: 0;
+        border-top: 1px solid var(--hairline);
+        margin: 40px 0 36px;
+      }
+
+      .section-label {
+        margin: 0 0 14px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--gray-light);
+      }
+      .need {
+        margin: 0;
+        font-size: clamp(23px, 6vw, 28px);
+        line-height: 1.38;
+        font-weight: 600;
+        letter-spacing: -0.015em;
+        color: var(--black);
+        overflow-wrap: break-word;
+      }
+
+      .guide-wrap { margin-top: 26px; }
+      .guide-wrap[hidden] { display: none; }
+      .guide-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 8px 2px;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--black);
+        text-decoration: underline;
+        text-underline-offset: 5px;
+        text-decoration-thickness: 1px;
+        text-decoration-color: #c9c9c9;
+      }
+      .guide-link:active { opacity: 0.6; }
+
+      .cta { margin-top: 44px; }
+      .cta[hidden] { display: none; }
+      .upload-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 58px;
+        padding: 16px 24px;
+        border-radius: 999px;
+        background: linear-gradient(100deg, #ff7a00 0%, #ffa200 55%, #ffc61a 100%);
+        color: #000000;
+        font-size: 17px;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+        text-decoration: none;
+        text-align: center;
+      }
+      .upload-btn:active { opacity: 0.88; }
+
+      .no-upload {
+        margin: 44px 0 0;
+        font-size: 16px;
+        line-height: 1.5;
+        color: var(--gray);
+      }
+      .no-upload[hidden] { display: none; }
+
+      .reassurance {
+        margin: 16px 0 0;
+        font-size: 14px;
+        line-height: 1.5;
+        color: var(--gray);
+        text-align: center;
+      }
+      .reassurance[hidden] { display: none; }
+
+      footer {
+        flex-shrink: 0;
+        padding-top: 64px;
+        display: flex;
+        justify-content: center;
+      }
+      footer img {
+        display: block;
+        width: 110px;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <main>
+        <p class="eyebrow">Deliverables</p>
+        <h1 id="headline">Hi there,</h1>
+        <p class="business" id="business" hidden></p>
+
+        <hr class="divider" />
+
+        <p class="section-label">What we need</p>
+        <p class="need" id="need">Your video files for your ads.</p>
+
+        <div class="guide-wrap" id="guideWrap" hidden>
+          <a class="guide-link" id="guideLink" href="#" target="_blank" rel="noopener noreferrer">See how to film it</a>
+        </div>
+
+        <div class="cta" id="ctaWrap" hidden>
+          <a class="upload-btn" id="uploadBtn" href="#" target="_blank" rel="noopener noreferrer">Upload your videos</a>
+        </div>
+        <p class="no-upload" id="noUpload" hidden>Your upload link will arrive by text.</p>
+        <p class="reassurance" id="reassurance" hidden>We get notified the second it lands.</p>
+      </main>
+
+      <footer>
+        <img src="assets/smma-logo.jpg" alt="SMMA" width="110" />
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+
+        function cleanText(value, maxLen) {
+          if (value == null) return "";
+          var s = String(value).trim().replace(/\s+/g, " ");
+          if (s.length > maxLen) s = s.slice(0, maxLen).trim();
+          return s;
+        }
+
+        function cleanUrl(value) {
+          if (value == null) return "";
+          var raw = String(value).trim();
+          if (!raw) return "";
+          try {
+            var u = new URL(raw);
+            if (u.protocol !== "https:" && u.protocol !== "http:") return "";
+            return u.href;
+          } catch (e) {
+            return "";
+          }
+        }
+
+        var client = cleanText(params.get("client"), 60);
+        var business = cleanText(params.get("business"), 100);
+        var need = cleanText(params.get("need"), 600);
+        var guide = cleanUrl(params.get("guide"));
+        var upload = cleanUrl(params.get("upload"));
+
+        var headline = document.getElementById("headline");
+        headline.textContent = client ? "Hi " + client + "," : "Hi there,";
+
+        var businessEl = document.getElementById("business");
+        if (business) {
+          businessEl.textContent = business;
+          businessEl.hidden = false;
+        }
+
+        var needEl = document.getElementById("need");
+        needEl.textContent = need || "Your video files for your ads.";
+
+        if (guide) {
+          var guideLink = document.getElementById("guideLink");
+          guideLink.href = guide;
+          document.getElementById("guideWrap").hidden = false;
+        }
+
+        if (upload) {
+          var uploadBtn = document.getElementById("uploadBtn");
+          uploadBtn.href = upload;
+          document.getElementById("ctaWrap").hidden = false;
+          document.getElementById("reassurance").hidden = false;
+        } else {
+          document.getElementById("noUpload").hidden = false;
+        }
+      })();
+    </script>
+  </body>
+</html>
